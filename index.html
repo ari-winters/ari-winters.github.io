@@ -1,11 +1,18 @@
 <html>
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Doto:wght@100..900&display=swap" rel="stylesheet">
     <h1>
-        <span data-value="LOST IN TRANSLATION" class="anim-text">LOST ABOUND MEANING</span>
+        <span data-value="WELCOME TO" class="anim-text">WELCOME TO</span>
     </h1>
     <h1>
-        <span data-value="LOST ABOUND MEANING" class="anim-text">LOST IN TRANSLATION</span>
+        <span data-value="OBSIDIAN" class="anim-text">OBSIDIAN</span>
     </h1>
+    <div class="header-spacer"></div>
+    <form>
+        <input type="text" id="textInput" name="password" autofocus>
+    </form>
 </html>
 
 <script>
@@ -13,21 +20,42 @@
     const allAnimatedElements = document.querySelectorAll(".anim-text");
 
     allAnimatedElements.forEach(element => {
-        element.addEventListener("mouseover", (event) => {
-            let iterations = 0;
-            const interval = setInterval(() => {
-                event.target.innerText = event.target.innerText.split("")
-                .map((letter, index) => {
-                    if(index < iterations) {
-                        return event.target.dataset.value[index];
-                    }
-                    return letters[Math.floor(Math.random() * 26)]
-                })
-                .join("");
-                if(iterations >= event.target.dataset.value.length) clearInterval(interval);
-                iterations += 1/3;
-            }, 30);
-        });
 
+        element.animationInterval = null;
+
+        let iterations = 0;
+        const targetText = element.dataset.value;
+
+        element.animationInterval = setInterval(() => {
+
+            element.innerText = element.innerText.split("")
+
+            .map((letter, index) => {
+
+                if(index < Math.floor(iterations - 3)) {
+                     return targetText[index];
+                }
+
+                return letters[Math.floor(Math.random() * 26)]
+            })
+
+            .join("");
+
+             if(iterations >= targetText.length + 3) {
+                clearInterval(element.animationInterval);
+                element.animationInterval = null;
+                element.innerText = targetText;
+            }
+            iterations += 1/4;
+
+        }, 30);
+    });
+</script>
+
+<script>
+    const inputField = document.getElementById('textInput');
+
+    inputField.addEventListener('input', function() {
+        this.value = this.value.toUpperCase();
     });
 </script>

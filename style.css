@@ -1,10 +1,44 @@
 body {
   background: black;
+  margin-top: 50px;
+  margin-right: 0;
+  margin-bottom: 0;
+  margin-left: 0;
 }
 
 h1 {
   text-align: center;
   color: white;
   font-size: 10rem;
-  font-family: "Space Mono", monospace;
+  font-family: "Doto", monospace;
+  margin-bottom: 0px;
+  margin-top: 0px;
+}
+
+form {
+  text-align: center;
+  color: white;
+  font-size: 5rem;
+  font-family: "Doto", monospace;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+input[type="text"] {
+    text-align: center;
+    color: black;
+    font-size: 4rem;
+    font-family: "Doto", monospace;
+    width: 100%;
+    height: 100px;
+}
+
+input[type="text"]:focus {
+    outline: none;
+}
+
+.header-spacer {
+  height: 200px;
+  width: 100%;
 }
