@@ -15,6 +15,15 @@ h1 {
   margin-top: 0px;
 }
 
+h2 {
+  text-align: center;
+  color: white;
+  font-size: 5rem;
+  font-family: "Doto", monospace;
+  margin-bottom: 0px;
+  margin-top: 0px;
+}
+
 form {
   text-align: center;
   color: white;
@@ -26,19 +35,99 @@ form {
 }
 
 input[type="text"] {
-    text-align: center;
-    color: black;
-    font-size: 4rem;
-    font-family: "Doto", monospace;
-    width: 100%;
-    height: 100px;
+  text-align: center;
+  color: black;
+  font-size: 4rem;
+  font-family: "Doto", monospace;
+  width: 100%;
+  height: 100px;
 }
 
 input[type="text"]:focus {
-    outline: none;
+  outline: none;
 }
 
 .header-spacer {
   height: 200px;
   width: 100%;
+}
+
+.centered-content {
+  text-align: center;
+}
+
+#typewriter-text {
+  display: inline-block;
+
+ 
+  position: relative;
+
+  margin: 0 auto;
+  white-space: nowrap;
+  overflow: hidden;
+
+ 
+  border-right: none;
+
+ 
+
+ 
+  animation: typing var(--total-duration) steps(var(--text-length)) forwards;
+
+  display: inline-block;
+
+ 
+  margin: 0;
+
+  padding-right: 5px;
+}
+
+
+#typewriter-text::after {
+  content: "";
+  position: absolute;
+
+ 
+  width: .08em;
+ 
+
+  height: 100%;
+  top: 0;
+
+  background-color: transparent;
+  right: 0;
+
+  animation: blink-caret .75s step-end infinite;
+}
+
+#typewriter-text.caret-off::after {
+ 
+  animation: none;
+  background-color: transparent !important;
+ 
+}
+
+
+@keyframes typing {
+  from {
+    width: 0
+  }
+
+  to {
+    width: var(--text-length-ch)
+  }
+}
+
+@keyframes blink-caret {
+
+  from,
+  to {
+    background-color: transparent
+  }
+
+  50% {
+    background-color: white;
+  }
+
+ 
 }

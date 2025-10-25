@@ -1,8 +1,14 @@
 <html>
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Doto:wght@100..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Doto:wght@100..900&display=swap" rel="stylesheet">
+
+<head>
+    <title>PROJECT OBSIDIAN</title>
+</head>
+
+<body>
     <h1>
         <span data-value="WELCOME TO" class="anim-text">WELCOME TO</span>
     </h1>
@@ -13,6 +19,11 @@
     <form>
         <input type="text" id="textInput" name="password" autofocus>
     </form>
+    <div class="centered-content">
+        <h2 id="typewriter-text" data-text="ENTER PASSWORD"></h2>
+    </div>
+</body>
+
 </html>
 
 <script>
@@ -30,23 +41,23 @@
 
             element.innerText = element.innerText.split("")
 
-            .map((letter, index) => {
+                .map((letter, index) => {
 
-                if(index < Math.floor(iterations - 3)) {
-                     return targetText[index];
-                }
+                    if (index < Math.floor(iterations - 3)) {
+                        return targetText[index];
+                    }
 
-                return letters[Math.floor(Math.random() * 26)]
-            })
+                    return letters[Math.floor(Math.random() * 26)]
+                })
 
-            .join("");
+                .join("");
 
-             if(iterations >= targetText.length + 3) {
+            if (iterations >= targetText.length + 3) {
                 clearInterval(element.animationInterval);
                 element.animationInterval = null;
                 element.innerText = targetText;
             }
-            iterations += 1/4;
+            iterations += 1 / 4;
 
         }, 30);
     });
@@ -55,7 +66,35 @@
 <script>
     const inputField = document.getElementById('textInput');
 
-    inputField.addEventListener('input', function() {
+    inputField.addEventListener('input', function () {
         this.value = this.value.toUpperCase();
+    });
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const h2Element = document.getElementById('typewriter-text');
+        const typingSpeed = 100;
+        const textLength = h2Element.dataset.text.length;
+        const totalDuration = (textLength * typingSpeed) / 1000;
+
+        h2Element.textContent = h2Element.dataset.text;
+        h2Element.style.setProperty('--text-length-ch', `${textLength}ch`);
+        h2Element.style.setProperty('--total-duration', `${totalDuration}s`);
+        h2Element.style.setProperty('--text-length', textLength);
+
+        h2Element.style.animation = `typing ${totalDuration}s steps(${textLength}) forwards`;
+
+        h2Element.addEventListener('animationend', (e) => {
+            if (e.animationName === 'typing') {
+                h2Element.classList.add('typing-done');
+                const delayBeforeDisappear = 1000;
+
+                setTimeout(() => {
+                    h2Element.classList.remove('typing-done');
+                    h2Element.classList.add('caret-off');
+                }, delayBeforeDisappear);
+            }
+        }, { once: true });
     });
 </script>
