@@ -59,24 +59,24 @@ input[type="text"]:focus {
 #typewriter-text {
   display: inline-block;
 
- 
+
   position: relative;
 
   margin: 0 auto;
   white-space: nowrap;
   overflow: hidden;
 
- 
+
   border-right: none;
 
- 
 
- 
+
+
   animation: typing var(--total-duration) steps(var(--text-length)) forwards;
 
   display: inline-block;
 
- 
+
   margin: 0;
 
   padding-right: 5px;
@@ -87,9 +87,9 @@ input[type="text"]:focus {
   content: "";
   position: absolute;
 
- 
+
   width: .08em;
- 
+
 
   height: 100%;
   top: 0;
@@ -101,10 +101,10 @@ input[type="text"]:focus {
 }
 
 #typewriter-text.caret-off::after {
- 
+
   animation: none;
   background-color: transparent !important;
- 
+
 }
 
 
@@ -129,5 +129,64 @@ input[type="text"]:focus {
     background-color: white;
   }
 
- 
+
+}
+
+.window-pane-grid {
+
+  display: grid;
+
+
+  grid-template-columns: 1fr 1fr;
+
+
+  grid-template-rows: 1fr 1fr;
+
+
+  width: 1000px;
+  height: 1000px;
+  margin: 50px auto;
+
+  gap: 50px;
+}
+
+.panel {
+  overflow: hidden;
+  position: relative;
+}
+
+.parallax-image {
+    width: 200%;
+    height: 200%;
+    position: absolute;
+    top: auto;    
+    
+    background-size: cover;
+    background-position: center center;
+}
+
+.panel-1 .parallax-image {
+    background-image: url('Pink.jpg');
+}
+
+.panel-2 .parallax-image {
+    background-image: url('Purple.jpg');
+}
+
+.panel-3 .parallax-image {
+    background-image: url('Green.png');
+}
+
+.panel-4 .parallax-image {
+    background-image: url('Blue.png');
+}
+
+.scrollable-container::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+.scrollable-container {
+  scrollbar-width: none;
 }

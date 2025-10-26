@@ -9,6 +9,7 @@
 </head>
 
 <body>
+    <div class="header-spacer"></div>
     <h1>
         <span data-value="WELCOME TO" class="anim-text">WELCOME TO</span>
     </h1>
@@ -22,6 +23,32 @@
     <div class="centered-content">
         <h2 id="typewriter-text" data-text="ENTER PASSWORD"></h2>
     </div>
+    <div class="header-spacer"></div>
+    <div class="header-spacer"></div>
+    <div class="header-spacer"></div>
+    <div class="window-pane-grid">
+        <div class="panel panel-1">
+            <div class="parallax-image"></div>
+        </div>
+        <div class="panel panel-2">
+            <div class="parallax-image"></div>
+        </div>
+        <div class="panel panel-3">
+            <div class="parallax-image"></div>
+        </div>
+        <div class="panel panel-4">
+            <div class="parallax-image"></div>
+        </div>
+    </div>
+    <div class="header-spacer"></div>
+    <div class="header-spacer"></div>
+    <div class="header-spacer"></div>
+    <div class="header-spacer"></div>
+    <div class="header-spacer"></div>
+    <div class="header-spacer"></div>
+    <div class="header-spacer"></div>
+    <div class="header-spacer"></div>
+    <div class="header-spacer"></div>
 </body>
 
 </html>
@@ -97,4 +124,28 @@
             }
         }, { once: true });
     });
+</script>
+
+<script>
+    function parallaxScroll() {
+        const panels = document.querySelectorAll('.panel');
+
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+        const parallaxRate = 0.3;
+
+        panels.forEach(panel => {
+            const image = panel.querySelector('.parallax-image');
+
+            const panelOffsetTop = panel.offsetTop;
+
+            const scrollPastPanel = scrollTop - panelOffsetTop;
+
+            const movement = scrollPastPanel * parallaxRate;
+
+            image.style.transform = `translateY(${movement}px)`;
+        });
+    }
+
+    document.addEventListener('scroll', parallaxScroll);
 </script>
